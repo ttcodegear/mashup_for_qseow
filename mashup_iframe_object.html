@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body onLoad="start()">
+
+<table border="1" width="100%" height="100%">
+  <tbody>
+    <tr>
+      <td width="30%" height="50%">
+        <iframe id="QV01" src="" style="width:100%;height:100%;"></iframe>
+      </td>
+      <td colspan="2" rowspan="2" width="70%" height="100%">
+        <iframe id="QV03" src="" style="width:100%;height:100%;"></iframe>
+      </td>
+    </tr>
+    <tr>
+      <td width="30%" height="50%">
+        <iframe id="QV02" src="" style="width:100%;height:100%;"></iframe>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+function start() {
+  var appid = "9de2ab76-e358-4f0c-8a93-f32ea36cd3db";
+  var obj1 = "/windows/single/?appid="+appid+"&obj=BDQru&lang=ja-JP&opt=ctxmenu&theme=breeze";
+  document.getElementById("QV01").src = obj1;
+  var obj2 = "/windows/single/?appid="+appid+"&obj=CzcvAzC&lang=ja-JP&opt=ctxmenu&theme=breeze";
+  document.getElementById("QV02").src = obj2;
+  var obj3 = "/windows/single/?appid="+appid+"&obj=pmGDmg&lang=ja-JP&opt=currsel%2Cctxmenu&theme=breeze";
+  document.getElementById("QV03").src = obj3;
+}
+</script>
+
+</body>
+</html>
