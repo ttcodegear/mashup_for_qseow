@@ -5,12 +5,27 @@
 
 <body onLoad="start()">
 
+<input type="button" value="logout" onclick="logout()">
 <iframe id="QV01" src="" style="width:100%;height:100%;"></iframe>
 
 <script>
 function start() {
   var sheet = "https://jptok-tts-r2vm/windows/single/?appid=9de2ab76-e358-4f0c-8a93-f32ea36cd3db&sheet=GjqPnx&lang=ja-JP&opt=currsel%2Cctxmenu&theme=breeze";
   document.getElementById("QV01").src = sheet;
+}
+
+function logout() {
+  var qps = "https://jptok-tts-r2vm/windows/qps";
+  fetch(qps + "/user", {
+    method: "DELETE",
+    mode: "cors",          // no-cors, cors, same-origin
+    credentials: "include" // include, same-origin, omit
+  }).then(response => {
+    var targetUri = window.location.href;
+    window.location.href = qps + "/logout?targetUri=" + targetUri;
+  }).catch(error => {
+    alert(error);
+  });
 }
 </script>
 
