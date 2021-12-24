@@ -194,6 +194,10 @@ require(["js/qlik", "jquery"], function(qlik, $) {
       $("#QV04").html(table);
     }
   });
+
+  window.onbeforeunload = function() {
+    app.close();
+  }
 });
 
 }
