@@ -1,11 +1,11 @@
 <?php
-require_once './vendor/autoload.php';
-//require_once 'C:\home\tts\php-7.4.30-x64\vendor\autoload.php';
+//require_once './vendor/autoload.php';
+require_once 'C:\home\tts\php-7.4.30-x64\vendor\autoload.php';
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$privateKey = file_get_contents('c:\temp\privatekey.pem');
+$privateKey = file_get_contents('c:\temp\MashupSample\jwt\privatekey.pem');
 
 $iat = time();
 $exp = $iat + 3600; //Expires 3600 seconds after the issue date/time.
@@ -16,9 +16,9 @@ $payload = [
   'exp' => $exp,
   'userid' => 'ttakahashi',
   'userdirectory' => 'JPTOK-TTS-R2VM',
-  'name' => 'ttakahashi',
-  'email' => 'test@test.com',
-  'groups' => ['Administrators', 'Sales', 'Marketing']
+  //'name' => 'ttakahashi',
+  //'email' => 'testxxx@test.com',
+  //'groups' => ['Administrators', 'Sales', 'Marketing']
 ];
 
 $jwt = JWT::encode($payload, $privateKey, 'RS256');
@@ -59,8 +59,8 @@ var server = {
 
 //認証済みかのチェック
 function connect() {
-  var tenant = "https://"+server.host+(server.port ? ":"+server.port : "");
-  //ログイン状態チェック用URL: https://[tenant]/[prefix]/hub/
+  var tenant = (server.isSecure ? "https://" : "http://")+server.host+(server.port ? ":"+server.port : "");
+  //ログイン状態チェック用URL: http(s)://[tenant]/[prefix]/hub/
   fetch(tenant + server.prefix + "hub/", {
     method: "GET",
     mode: "cors",           // no-cors, cors, same-origin
